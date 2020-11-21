@@ -10,8 +10,6 @@ def main():
     state = request.args.get("state")
     code = request.args.get("code")
     data = decode(state).split('##')
-    print(data)
-    state = encode(data[0])
     redirectURL = data[1] + '?state=' + state + '&code=' + code
     print(redirectURL)
     return redirect(redirectURL)
