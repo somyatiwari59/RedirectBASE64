@@ -7,10 +7,12 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def main():
-    print(request.args);
+    print('Request Arguments')
+    print(request.args)
     state = request.args.get("state")
     code = request.args.get("code")
     data = decode(state).split('##')
+    print('Redirect URL')
     redirectURL = data[1] + '?state=' + state + '&code=' + code
     print(redirectURL)
     return redirect(redirectURL)
