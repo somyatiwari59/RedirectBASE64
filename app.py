@@ -7,6 +7,7 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def main():
+    print(request.args);
     state = request.args.get("state")
     code = request.args.get("code")
     data = decode(state).split('##')
