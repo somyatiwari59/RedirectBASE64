@@ -11,9 +11,16 @@ def main():
     print(request.args)
     state = request.args.get("state")
     code = request.args.get("code")
+    error = request.args.get("error")
+    error_code = request.args.get("error_code")
+    error_description = request.args.get("error_description")
+    error_reason = request.args.get("error_reason")
     data = decode(state).split('##')
+    if code != None :
+        redirectURL = data[1] + '?state=' + state + '&code=' + code
+    else :
+        redirectURL = data[1] + '?state=' + state + '&error=' + error + '&error_code=' + error_code + '&error_description=' + '&error_reason=' + error_reason
     print('Redirect URL')
-    redirectURL = data[1] + '?state=' + state + '&code=' + code
     print(redirectURL)
     return redirect(redirectURL)
 
